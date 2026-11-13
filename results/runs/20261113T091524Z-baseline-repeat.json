@@ -1,0 +1,841 @@
+{
+  "run_id": "20261113T091524Z-baseline-repeat",
+  "label": "baseline-repeat",
+  "started_at": "2026-11-13T09:15:24.478163+00:00",
+  "agent_model": "qwen3:8b",
+  "judge_model": "qwen3:8b",
+  "num_predict": null,
+  "price_in_per_mtok": 1.0,
+  "price_out_per_mtok": 5.0,
+  "wall_clock_s": 196.81100433598476,
+  "cases": [
+    {
+      "target": "structured-output",
+      "case_id": "so-01-plain",
+      "task": "Extract the invoice: 'Invoice from Acme Corp. Amount due: 120.50 USD.'",
+      "reference": "{\"vendor\": \"Acme Corp\", \"total\": 120.5, \"currency\": \"USD\"}",
+      "output": "{\"vendor\":\"Acme Corp\",\"total\":120.5,\"currency\":\"USD\"}",
+      "checks": {
+        "valid_schema": true,
+        "vendor": true,
+        "total": true,
+        "currency": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output exactly matches the reference in vendor, total, and currency.",
+      "detail": {
+        "attempts": 1
+      },
+      "error": null,
+      "latency_s": 1.7943504580034642,
+      "llm_calls": 1,
+      "prompt_tokens": 170,
+      "completion_tokens": 25,
+      "judge_latency_s": 1.3406567909987643,
+      "judge_prompt_tokens": 222,
+      "judge_completion_tokens": 26,
+      "span_id": "753820bf2a3c"
+    },
+    {
+      "target": "structured-output",
+      "case_id": "so-02-euro-symbol",
+      "task": "Extract the invoice: 'Globex GmbH billed us \u20ac2,340.00 for March consulting.'",
+      "reference": "{\"vendor\": \"Globex GmbH\", \"total\": 2340.0, \"currency\": \"EUR\"}",
+      "output": "{\"vendor\":\"Globex GmbH\",\"total\":2340.0,\"currency\":\"EUR\"}",
+      "checks": {
+        "valid_schema": true,
+        "vendor": true,
+        "total": true,
+        "currency": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly extracts all required fields with the correct format and values.",
+      "detail": {
+        "attempts": 1
+      },
+      "error": null,
+      "latency_s": 1.0682657920042402,
+      "llm_calls": 1,
+      "prompt_tokens": 171,
+      "completion_tokens": 28,
+      "judge_latency_s": 1.3295832500007236,
+      "judge_prompt_tokens": 231,
+      "judge_completion_tokens": 26,
+      "span_id": "c8ecd9915324"
+    },
+    {
+      "target": "structured-output",
+      "case_id": "so-03-subtotal-vs-total",
+      "task": "Extract the invoice: 'Initech Ltd. Subtotal 800.00 GBP, VAT 160.00 GBP, total payable 960.00 GBP.'",
+      "reference": "{\"vendor\": \"Initech Ltd\", \"total\": 960.0, \"currency\": \"GBP\"}",
+      "output": "{\"vendor\":\"Initech Ltd.\",\"total\":960.0,\"currency\":\"GBP\"}",
+      "checks": {
+        "valid_schema": true,
+        "vendor": true,
+        "total": true,
+        "currency": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly identifies the total as 960.00 GBP and includes the vendor name and currency.",
+      "detail": {
+        "attempts": 1
+      },
+      "error": null,
+      "latency_s": 1.1084616249936516,
+      "llm_calls": 1,
+      "prompt_tokens": 188,
+      "completion_tokens": 26,
+      "judge_latency_s": 1.6388855000041076,
+      "judge_prompt_tokens": 240,
+      "judge_completion_tokens": 35,
+      "span_id": "d7328f69cf5e"
+    },
+    {
+      "target": "structured-output",
+      "case_id": "so-04-thousands",
+      "task": "Extract the invoice: 'Umbrella Logistics invoice no. 7781: 1,250,000 JPY due in 30 days.'",
+      "reference": "{\"vendor\": \"Umbrella Logistics\", \"total\": 1250000.0, \"currency\": \"JPY\"}",
+      "output": "{\"vendor\":\"Umbrella Logistics\",\"total\":1250000.0,\"currency\":\"JPY\"}",
+      "checks": {
+        "valid_schema": true,
+        "vendor": true,
+        "total": true,
+        "currency": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly extracts the vendor, total, and currency from the invoice statement.",
+      "detail": {
+        "attempts": 1
+      },
+      "error": null,
+      "latency_s": 1.2084950410062447,
+      "llm_calls": 1,
+      "prompt_tokens": 184,
+      "completion_tokens": 29,
+      "judge_latency_s": 1.5098057919967687,
+      "judge_prompt_tokens": 257,
+      "judge_completion_tokens": 28,
+      "span_id": "c4abaf36c302"
+    },
+    {
+      "target": "structured-output",
+      "case_id": "so-05-dollar-cad",
+      "task": "Extract the invoice: 'Maple Leaf Supplies sent a bill for 89.99 Canadian dollars (CAD).'",
+      "reference": "{\"vendor\": \"Maple Leaf Supplies\", \"total\": 89.99, \"currency\": \"CAD\"}",
+      "output": "{\"vendor\":\"Maple Leaf Supplies\",\"total\":89.99,\"currency\":\"CAD\"}",
+      "checks": {
+        "valid_schema": true,
+        "vendor": true,
+        "total": true,
+        "currency": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly includes all required fields: vendor, total, and currency.",
+      "detail": {
+        "attempts": 1
+      },
+      "error": null,
+      "latency_s": 1.0000863340028445,
+      "llm_calls": 1,
+      "prompt_tokens": 171,
+      "completion_tokens": 26,
+      "judge_latency_s": 1.397778874998039,
+      "judge_prompt_tokens": 226,
+      "judge_completion_tokens": 27,
+      "span_id": "ce2ab3e61ee2"
+    },
+    {
+      "target": "structured-output",
+      "case_id": "so-06-discount",
+      "task": "Extract the invoice: 'Stark Components: list price 500 USD, 20% discount applied, final charge 400 USD.'",
+      "reference": "{\"vendor\": \"Stark Components\", \"total\": 400.0, \"currency\": \"USD\"}",
+      "output": "{\"vendor\":\"Stark Components\",\"total\":400.0,\"currency\":\"USD\"}",
+      "checks": {
+        "valid_schema": true,
+        "vendor": true,
+        "total": true,
+        "currency": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly extracts the vendor, total, and currency as specified in the reference.",
+      "detail": {
+        "attempts": 1
+      },
+      "error": null,
+      "latency_s": 1.0234164590001456,
+      "llm_calls": 1,
+      "prompt_tokens": 179,
+      "completion_tokens": 23,
+      "judge_latency_s": 1.4411696669994853,
+      "judge_prompt_tokens": 229,
+      "judge_completion_tokens": 29,
+      "span_id": "e5a178666c48"
+    },
+    {
+      "target": "structured-output",
+      "case_id": "so-07-lowercase-vendor",
+      "task": "Extract the invoice: 'from: pixel & co. -- total 42.00 chf'",
+      "reference": "{\"vendor\": \"pixel & co.\", \"total\": 42.0, \"currency\": \"CHF\"}",
+      "output": "{\"vendor\":\"pixel & co.\",\"total\":42.0,\"currency\":\"CHF\"}",
+      "checks": {
+        "valid_schema": true,
+        "vendor": true,
+        "total": true,
+        "currency": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly extracts all required fields from the invoice.",
+      "detail": {
+        "attempts": 1
+      },
+      "error": null,
+      "latency_s": 0.987815957996645,
+      "llm_calls": 1,
+      "prompt_tokens": 168,
+      "completion_tokens": 26,
+      "judge_latency_s": 1.222562167000433,
+      "judge_prompt_tokens": 227,
+      "judge_completion_tokens": 23,
+      "span_id": "c0185b32cee7"
+    },
+    {
+      "target": "structured-output",
+      "case_id": "so-08-two-amounts",
+      "task": "Extract the invoice: 'Wayne Freight billed 15.00 USD for insurance and 310.00 USD for shipping; grand total 325.00 USD.'",
+      "reference": "{\"vendor\": \"Wayne Freight\", \"total\": 325.0, \"currency\": \"USD\"}",
+      "output": "{\"vendor\":\"Wayne Freight\",\"total\":325.0,\"currency\":\"USD\"}",
+      "checks": {
+        "valid_schema": true,
+        "vendor": true,
+        "total": true,
+        "currency": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly extracts all required fields from the invoice.",
+      "detail": {
+        "attempts": 1
+      },
+      "error": null,
+      "latency_s": 1.1101045830000658,
+      "llm_calls": 1,
+      "prompt_tokens": 188,
+      "completion_tokens": 26,
+      "judge_latency_s": 1.2219882080025855,
+      "judge_prompt_tokens": 240,
+      "judge_completion_tokens": 23,
+      "span_id": "86603dc537b3"
+    },
+    {
+      "target": "rag-citation",
+      "case_id": "rag-01-audit-ent",
+      "task": "How long are audit logs retained on the Enterprise plan?",
+      "reference": "400 days.",
+      "output": "Audit logs are retained for 400 days on the Enterprise plan.[1]",
+      "checks": {
+        "abstention_correct": true,
+        "mentions:400": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer correctly states the retention period as 400 days, which matches the reference.",
+      "detail": {
+        "status": "answered",
+        "confidence": 0.876,
+        "used_fallback": false,
+        "claims": 1,
+        "removed_claims": 0,
+        "flags": []
+      },
+      "error": null,
+      "latency_s": 3.9518037919988274,
+      "llm_calls": 1,
+      "prompt_tokens": 587,
+      "completion_tokens": 72,
+      "judge_latency_s": 1.380058791997726,
+      "judge_prompt_tokens": 212,
+      "judge_completion_tokens": 31,
+      "span_id": "7847bc56f46e"
+    },
+    {
+      "target": "rag-citation",
+      "case_id": "rag-02-team-price",
+      "task": "How much does the Team plan cost per month?",
+      "reference": "$79 per month.",
+      "output": "The Team plan costs $79 per month.[1]",
+      "checks": {
+        "abstention_correct": true,
+        "mentions:79": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer correctly states the fact from the reference without adding any unsupported information.",
+      "detail": {
+        "status": "answered",
+        "confidence": 0.838,
+        "used_fallback": false,
+        "claims": 1,
+        "removed_claims": 0,
+        "flags": []
+      },
+      "error": null,
+      "latency_s": 3.2903489169984823,
+      "llm_calls": 1,
+      "prompt_tokens": 633,
+      "completion_tokens": 49,
+      "judge_latency_s": 1.252447790997394,
+      "judge_prompt_tokens": 207,
+      "judge_completion_tokens": 27,
+      "span_id": "ac4836e951cf"
+    },
+    {
+      "target": "rag-citation",
+      "case_id": "rag-03-refund",
+      "task": "How long do new customers have to request a full refund?",
+      "reference": "14 days from the first payment.",
+      "output": "New customers can request a full refund within 14 days of their first payment.[1]",
+      "checks": {
+        "abstention_correct": true,
+        "mentions:14": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer accurately reflects the reference without adding any unsupported information.",
+      "detail": {
+        "status": "answered",
+        "confidence": 0.837,
+        "used_fallback": false,
+        "claims": 1,
+        "removed_claims": 0,
+        "flags": []
+      },
+      "error": null,
+      "latency_s": 3.927001833995746,
+      "llm_calls": 1,
+      "prompt_tokens": 635,
+      "completion_tokens": 67,
+      "judge_latency_s": 1.148483707998821,
+      "judge_prompt_tokens": 218,
+      "judge_completion_tokens": 24,
+      "span_id": "d85a78f7c935"
+    },
+    {
+      "target": "rag-citation",
+      "case_id": "rag-04-sso",
+      "task": "Which plan supports SAML single sign-on?",
+      "reference": "Only the Enterprise plan.",
+      "output": "The Enterprise plan supports SAML single sign-on.[1]",
+      "checks": {
+        "abstention_correct": true,
+        "mentions:enterprise": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer correctly states the fact from the reference without adding any unsupported information.",
+      "detail": {
+        "status": "answered",
+        "confidence": 0.82,
+        "used_fallback": false,
+        "claims": 1,
+        "removed_claims": 0,
+        "flags": []
+      },
+      "error": null,
+      "latency_s": 3.5822041669962346,
+      "llm_calls": 1,
+      "prompt_tokens": 585,
+      "completion_tokens": 61,
+      "judge_latency_s": 1.2553045410022605,
+      "judge_prompt_tokens": 205,
+      "judge_completion_tokens": 27,
+      "span_id": "1fb933ace990"
+    },
+    {
+      "target": "rag-citation",
+      "case_id": "rag-05-credit",
+      "task": "What service credit applies if monthly uptime falls below 99.0%?",
+      "reference": "A credit of 25% of the monthly fee.",
+      "output": "If monthly uptime falls below 99.0%, a service credit of 25% of the monthly fee applies.[1]",
+      "checks": {
+        "abstention_correct": true,
+        "mentions:25": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer correctly states the fact from the reference without adding any unsupported information.",
+      "detail": {
+        "status": "answered",
+        "confidence": 0.868,
+        "used_fallback": false,
+        "claims": 1,
+        "removed_claims": 0,
+        "flags": []
+      },
+      "error": null,
+      "latency_s": 4.0486533750008675,
+      "llm_calls": 1,
+      "prompt_tokens": 515,
+      "completion_tokens": 80,
+      "judge_latency_s": 1.3788345000066329,
+      "judge_prompt_tokens": 234,
+      "judge_completion_tokens": 27,
+      "span_id": "be221d858b64"
+    },
+    {
+      "target": "rag-citation",
+      "case_id": "rag-06-ent-response",
+      "task": "How fast does Enterprise support respond to critical incidents?",
+      "reference": "Within 1 hour.",
+      "output": "Enterprise customers receive a first response within 1 hour for critical incidents.[1]",
+      "checks": {
+        "abstention_correct": true,
+        "mentions:1 hour": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer accurately reflects the reference without adding any unsupported information.",
+      "detail": {
+        "status": "answered",
+        "confidence": 0.773,
+        "used_fallback": false,
+        "claims": 1,
+        "removed_claims": 0,
+        "flags": []
+      },
+      "error": null,
+      "latency_s": 3.8110754169974825,
+      "llm_calls": 1,
+      "prompt_tokens": 599,
+      "completion_tokens": 65,
+      "judge_latency_s": 1.1657474169987836,
+      "judge_prompt_tokens": 210,
+      "judge_completion_tokens": 24,
+      "span_id": "0b9068757c7c"
+    },
+    {
+      "target": "rag-citation",
+      "case_id": "rag-07-backups",
+      "task": "How long are backups kept after the original data is deleted?",
+      "reference": "35 days.",
+      "output": "Backups are retained for 35 days after the original data is deleted.[1]",
+      "checks": {
+        "abstention_correct": true,
+        "mentions:35": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer correctly states the fact from the reference without adding any unsupported information.",
+      "detail": {
+        "status": "answered",
+        "confidence": 0.906,
+        "used_fallback": false,
+        "claims": 1,
+        "removed_claims": 0,
+        "flags": []
+      },
+      "error": null,
+      "latency_s": 3.475718207999307,
+      "llm_calls": 1,
+      "prompt_tokens": 533,
+      "completion_tokens": 64,
+      "judge_latency_s": 1.2544682500010822,
+      "judge_prompt_tokens": 213,
+      "judge_completion_tokens": 27,
+      "span_id": "cb234dcb3872"
+    },
+    {
+      "target": "rag-citation",
+      "case_id": "rag-08-regions",
+      "task": "Which regions does Helios Cloud operate data centers in?",
+      "reference": "Five regions: US East (Virginia), US West (Oregon), EU Central (Frankfurt), EU West (Dublin), Asia Pacific (Singapore). Comes from the web snapshot, not the KB.",
+      "output": "Helios Cloud operates data centers in US East (Virginia).[1] Helios Cloud operates data centers in US West (Oregon).[1] Helios Cloud operates data centers in EU Central (Frankfurt).[1] Helios Cloud operates data centers in EU West (Dublin).[1] Helios Cloud operates data centers in Asia Pacific (Singapore).[1]",
+      "checks": {
+        "abstention_correct": true,
+        "mentions:singapore": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer correctly lists all five regions specified in the reference without adding any unsupported information.",
+      "detail": {
+        "status": "answered",
+        "confidence": 0.786,
+        "used_fallback": true,
+        "claims": 5,
+        "removed_claims": 0,
+        "flags": [
+          "answered_from_search"
+        ]
+      },
+      "error": null,
+      "latency_s": 13.87519666699518,
+      "llm_calls": 1,
+      "prompt_tokens": 357,
+      "completion_tokens": 382,
+      "judge_latency_s": 1.6841530000019702,
+      "judge_prompt_tokens": 302,
+      "judge_completion_tokens": 29,
+      "span_id": "f84df53eab48"
+    },
+    {
+      "target": "rag-citation",
+      "case_id": "rag-09-ceo",
+      "task": "Who is the CEO of Helios Cloud?",
+      "reference": "Not answerable from the documents; the agent should abstain.",
+      "output": "I couldn't find a sufficiently supported answer to that in the available sources.",
+      "checks": {
+        "abstention_correct": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The response correctly abstains from providing an answer as the reference states the question cannot be answered.",
+      "detail": {
+        "status": "abstained",
+        "confidence": 0.0,
+        "used_fallback": false,
+        "claims": 0,
+        "removed_claims": 0,
+        "flags": [
+          "low_confidence"
+        ]
+      },
+      "error": null,
+      "latency_s": 3.3633784580015345,
+      "llm_calls": 2,
+      "prompt_tokens": 1074,
+      "completion_tokens": 24,
+      "judge_latency_s": 1.4163779580048868,
+      "judge_prompt_tokens": 216,
+      "judge_completion_tokens": 31,
+      "span_id": "04f714827a77"
+    },
+    {
+      "target": "rag-citation",
+      "case_id": "rag-10-worldcup",
+      "task": "Who won the 2022 football World Cup?",
+      "reference": "Not answerable from the documents; the agent should abstain.",
+      "output": "I couldn't find a sufficiently supported answer to that in the available sources.",
+      "checks": {
+        "abstention_correct": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer correctly abstains as the reference states the question cannot be answered.",
+      "detail": {
+        "status": "abstained",
+        "confidence": 0.0,
+        "used_fallback": false,
+        "claims": 0,
+        "removed_claims": 0,
+        "flags": [
+          "weak_retrieval",
+          "low_confidence"
+        ]
+      },
+      "error": null,
+      "latency_s": 0.008877374995790888,
+      "llm_calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "judge_latency_s": 1.3912828339962289,
+      "judge_prompt_tokens": 219,
+      "judge_completion_tokens": 27,
+      "span_id": "cd68b2a11c89"
+    },
+    {
+      "target": "react-planning",
+      "case_id": "re-01-arith",
+      "task": "What is 17 * 23 + 4?",
+      "reference": "395",
+      "output": "395",
+      "checks": {
+        "correct_answer": true,
+        "not_degraded": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly provides the answer from the reference.",
+      "detail": {
+        "stop_reason": "answered",
+        "iterations": 2,
+        "revisions": 0,
+        "tool_calls": 1,
+        "warnings": []
+      },
+      "error": null,
+      "latency_s": 6.4441022090031765,
+      "llm_calls": 4,
+      "prompt_tokens": 698,
+      "completion_tokens": 137,
+      "judge_latency_s": 1.084603208997578,
+      "judge_prompt_tokens": 201,
+      "judge_completion_tokens": 22,
+      "span_id": "9a16bbe24f2a"
+    },
+    {
+      "target": "react-planning",
+      "case_id": "re-02-arith-paren",
+      "task": "Compute (120 - 45) / 5.",
+      "reference": "15",
+      "output": "15",
+      "checks": {
+        "correct_answer": true,
+        "not_degraded": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly computes the value from the reference.",
+      "detail": {
+        "stop_reason": "answered",
+        "iterations": 3,
+        "revisions": 0,
+        "tool_calls": 2,
+        "warnings": []
+      },
+      "error": null,
+      "latency_s": 11.337756249995437,
+      "llm_calls": 6,
+      "prompt_tokens": 1402,
+      "completion_tokens": 282,
+      "judge_latency_s": 1.0932818340006634,
+      "judge_prompt_tokens": 200,
+      "judge_completion_tokens": 22,
+      "span_id": "c0d081525ab9"
+    },
+    {
+      "target": "react-planning",
+      "case_id": "re-03-lookup",
+      "task": "How tall is the Eiffel Tower in metres?",
+      "reference": "330 metres",
+      "output": "The Eiffel Tower is 330 metres tall.",
+      "checks": {
+        "correct_answer": true,
+        "not_degraded": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer correctly states the height of the Eiffel Tower in metres as provided in the reference.",
+      "detail": {
+        "stop_reason": "answered",
+        "iterations": 3,
+        "revisions": 0,
+        "tool_calls": 2,
+        "warnings": []
+      },
+      "error": null,
+      "latency_s": 11.309652666001057,
+      "llm_calls": 6,
+      "prompt_tokens": 1496,
+      "completion_tokens": 276,
+      "judge_latency_s": 1.4336496249961783,
+      "judge_prompt_tokens": 209,
+      "judge_completion_tokens": 32,
+      "span_id": "97c642b06504"
+    },
+    {
+      "target": "react-planning",
+      "case_id": "re-04-lookup-add",
+      "task": "What is the combined population of Paris and Berlin, in millions?",
+      "reference": "2.1 + 3.7 = 5.8 million",
+      "output": "The agent has attempted to find the population of Paris and Berlin using various queries but has not yet obtained valid results. The population data for both cities is needed to calculate the combined population, but so far, the necessary information is missing. The most useful partial answer is that the combined population of Paris and Berlin, in millions, cannot be determined at this time due to the lack of available data.",
+      "checks": {
+        "correct_answer": false,
+        "not_degraded": false
+      },
+      "check_score": 0.0,
+      "judge_score": 2,
+      "judge_reason": "The agent correctly identifies the need for population data but fails to provide the correct answer when it is available in the reference.",
+      "detail": {
+        "stop_reason": "tool_failures",
+        "iterations": 3,
+        "revisions": 0,
+        "tool_calls": 3,
+        "warnings": []
+      },
+      "error": null,
+      "latency_s": 13.45411916699959,
+      "llm_calls": 6,
+      "prompt_tokens": 1510,
+      "completion_tokens": 344,
+      "judge_latency_s": 1.904029792000074,
+      "judge_prompt_tokens": 287,
+      "judge_completion_tokens": 36,
+      "span_id": "b776afb4e12b"
+    },
+    {
+      "target": "react-planning",
+      "case_id": "re-05-difference",
+      "task": "How many more million residents does Berlin have than Paris?",
+      "reference": "3.7 - 2.1 = 1.6 million",
+      "output": "Berlin has 1.6 million more residents than Paris.",
+      "checks": {
+        "correct_answer": true,
+        "not_degraded": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The answer correctly states the difference in population between Berlin and Paris as given in the reference.",
+      "detail": {
+        "stop_reason": "answered",
+        "iterations": 5,
+        "revisions": 0,
+        "tool_calls": 4,
+        "warnings": []
+      },
+      "error": null,
+      "latency_s": 19.92688612499478,
+      "llm_calls": 10,
+      "prompt_tokens": 3266,
+      "completion_tokens": 485,
+      "judge_latency_s": 1.4855561250005849,
+      "judge_prompt_tokens": 218,
+      "judge_completion_tokens": 30,
+      "span_id": "13e09bbb160f"
+    },
+    {
+      "target": "react-planning",
+      "case_id": "re-06-ratio",
+      "task": "Divide Tokyo's population by Paris's population and round to one decimal place.",
+      "reference": "9.7 / 2.1 = 4.62, rounds to 4.6",
+      "output": "4.6",
+      "checks": {
+        "correct_answer": true,
+        "not_degraded": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly rounds the division of Tokyo's population by Paris's population to one decimal place.",
+      "detail": {
+        "stop_reason": "answered",
+        "iterations": 4,
+        "revisions": 0,
+        "tool_calls": 3,
+        "warnings": []
+      },
+      "error": null,
+      "latency_s": 12.937489208001352,
+      "llm_calls": 8,
+      "prompt_tokens": 2014,
+      "completion_tokens": 310,
+      "judge_latency_s": 1.6189997080000467,
+      "judge_prompt_tokens": 222,
+      "judge_completion_tokens": 31,
+      "span_id": "298819f7c436"
+    },
+    {
+      "target": "react-planning",
+      "case_id": "re-07-pct",
+      "task": "Take the height of the Eiffel Tower in metres and add 10 percent. What is the result?",
+      "reference": "330 * 1.1 = 363",
+      "output": "363.0",
+      "checks": {
+        "correct_answer": true,
+        "not_degraded": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly calculates 10% of 330 and adds it to 330, resulting in 363.",
+      "detail": {
+        "stop_reason": "answered",
+        "iterations": 4,
+        "revisions": 0,
+        "tool_calls": 3,
+        "warnings": []
+      },
+      "error": null,
+      "latency_s": 16.673608042001433,
+      "llm_calls": 8,
+      "prompt_tokens": 2552,
+      "completion_tokens": 399,
+      "judge_latency_s": 1.8544118329955381,
+      "judge_prompt_tokens": 223,
+      "judge_completion_tokens": 41,
+      "span_id": "c9f0838cad08"
+    },
+    {
+      "target": "react-planning",
+      "case_id": "re-08-unanswerable",
+      "task": "What is the population of Rome?",
+      "reference": "Unanswerable: the fact base has no entry for Rome. The agent must say it cannot find it and must not invent a number.",
+      "output": "The agent has attempted multiple search queries to find the population of Rome, including \"population of Rome,\" \"current population of Rome, Italy,\" and \"population of Rome 2023,\" but none have returned results. This suggests either the search tool is not functioning properly, the query format is incorrect, or the data is not accessible through this method. The population of Rome is a well-documented statistic, so the issue likely lies with the search mechanism or data source. The exact population figure is not established in the provided evidence.",
+      "checks": {
+        "no_guess": true
+      },
+      "check_score": 1.0,
+      "judge_score": 5,
+      "judge_reason": "The output correctly states that the population of Rome is unanswerable based on the reference and does not attempt to guess a number.",
+      "detail": {
+        "stop_reason": "tool_failures",
+        "iterations": 3,
+        "revisions": 0,
+        "tool_calls": 3,
+        "warnings": []
+      },
+      "error": null,
+      "latency_s": 15.085773834005522,
+      "llm_calls": 6,
+      "prompt_tokens": 1459,
+      "completion_tokens": 387,
+      "judge_latency_s": 2.102241207998304,
+      "judge_prompt_tokens": 323,
+      "judge_completion_tokens": 38,
+      "span_id": "548a70269789"
+    }
+  ],
+  "summary": {
+    "rag-citation": {
+      "cases": 10,
+      "check_pass_rate": 1.0,
+      "check_score_mean": 1.0,
+      "judge_mean": 5.0,
+      "judge_unparsed": 0,
+      "latency_mean_s": 4.333425820997945,
+      "latency_p50_s": 3.6966397919968585,
+      "latency_p95_s": 9.453252185597746,
+      "llm_calls": 10,
+      "prompt_tokens": 5518,
+      "completion_tokens": 864,
+      "est_cost_usd": 0.009838,
+      "judge_latency_total_s": 13.327158791005786,
+      "errors": 0
+    },
+    "react-planning": {
+      "cases": 8,
+      "check_pass_rate": 0.875,
+      "check_score_mean": 0.875,
+      "judge_mean": 4.625,
+      "judge_unparsed": 0,
+      "latency_mean_s": 13.396173437625293,
+      "latency_p50_s": 13.195804187500471,
+      "latency_p95_s": 18.78823879594711,
+      "llm_calls": 54,
+      "prompt_tokens": 14397,
+      "completion_tokens": 2620,
+      "est_cost_usd": 0.027497,
+      "judge_latency_total_s": 12.576773333988967,
+      "errors": 0
+    },
+    "structured-output": {
+      "cases": 8,
+      "check_pass_rate": 1.0,
+      "check_score_mean": 1.0,
+      "judge_mean": 5.0,
+      "judge_unparsed": 0,
+      "latency_mean_s": 1.1626245312509127,
+      "latency_p50_s": 1.088363708498946,
+      "latency_p95_s": 1.5893010620544374,
+      "llm_calls": 8,
+      "prompt_tokens": 1419,
+      "completion_tokens": 209,
+      "est_cost_usd": 0.002464,
+      "judge_latency_total_s": 11.102430250000907,
+      "errors": 0
+    }
+  }
+}

@@ -56,7 +56,7 @@ def build(out_dir: Path, baseline_label: str = "baseline") -> str:
             if not s:
                 continue
             parts.append(f"<tr><td>{escape(r['label'])}</td><td>{t}</td><td class=n>{s['cases']}</td>"
-                         f"<td class=n>{_f(s['check_pass_rate'], 0) if s['check_pass_rate'] in (0, 1) else _f(100 * s['check_pass_rate'], 0, '%')}</td>"
+                         f"<td class=n>{_f(100 * s['check_pass_rate'], 0, '%')}</td>"
                          f"<td class=cell>{_f(s['judge_mean'])}{_bar(s['judge_mean'], max_judge)}</td>"
                          f"<td class=n>{_f(s['latency_p50_s'], 1)}</td><td class=n>{_f(s['latency_p95_s'], 1)}</td>"
                          f"<td class=n>{s['prompt_tokens']:,}/{s['completion_tokens']:,}</td><td class=n>${s['est_cost_usd']:.4f}</td></tr>")

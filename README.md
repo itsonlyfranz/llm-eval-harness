@@ -24,17 +24,17 @@ Run `baseline`, then `baseline-repeat` (identical settings, to measure noise), t
 
 | Run | Target | Checks fully passed | Judge mean (1-5) | p50 / p95 latency (s) | LLM calls | Tokens in / out | Est. cost (USD) |
 |---|---|---|---|---|---|---|---|
-| baseline | structured-output | 8/8 | 5.00 | 1.10 / 1.25 | 8 | 1,419 / 209 | 0.0020 |
-| baseline | rag-citation | 10/10 | 5.00 | 3.55 / 9.57 | 10 | 5,518 / 864 | 0.0100 |
-| baseline | react-planning | 7/8 | 4.62 | 15.0 / 21.1 | 54 | 14,397 / 2,620 | 0.0270 |
-| baseline-repeat | structured-output | 8/8 | 5.00 | 1.09 / 1.59 | 8 | 1,419 / 209 | 0.0020 |
-| baseline-repeat | rag-citation | 10/10 | 5.00 | 3.70 / 9.45 | 10 | 5,518 / 864 | 0.0100 |
-| baseline-repeat | react-planning | 7/8 | 4.62 | 13.2 / 18.8 | 54 | 14,397 / 2,620 | 0.0270 |
-| truncated | structured-output | 8/8 | 5.00 | 1.09 / 1.31 | 8 | 1,419 / 209 | 0.0020 |
-| truncated | rag-citation | 2/10 | 3.30 | 7.77 / 8.04 | 30 | 15,764 / 1,144 | 0.0210 |
-| truncated | react-planning | 1/8 | 1.62 | 6.23 / 12.0 | 38 | 7,369 / 1,421 | 0.0140 |
+| baseline | structured-output | 8/8 | 5.00 | 1.10 / 1.25 | 8 | 1,419 / 209 | 0.0025 |
+| baseline | rag-citation | 10/10 | 5.00 | 3.55 / 9.57 | 10 | 5,518 / 864 | 0.0098 |
+| baseline | react-planning | 7/8 | 4.62 | 15.0 / 21.1 | 54 | 14,397 / 2,620 | 0.0275 |
+| baseline-repeat | structured-output | 8/8 | 5.00 | 1.09 / 1.59 | 8 | 1,419 / 209 | 0.0025 |
+| baseline-repeat | rag-citation | 10/10 | 5.00 | 3.70 / 9.45 | 10 | 5,518 / 864 | 0.0098 |
+| baseline-repeat | react-planning | 7/8 | 4.62 | 13.2 / 18.8 | 54 | 14,397 / 2,620 | 0.0275 |
+| truncated | structured-output | 8/8 | 5.00 | 1.09 / 1.31 | 8 | 1,419 / 209 | 0.0025 |
+| truncated | rag-citation | 2/10 | 3.30 | 7.77 / 8.04 | 30 | 15,764 / 1,144 | 0.0215 |
+| truncated | react-planning | 1/8 | 1.62 | 6.23 / 12.0 | 38 | 7,369 / 1,421 | 0.0145 |
 
-Costs are rounded to the precision shown; exact values are in the run files. Full per-run wall clock (agent plus judge): 208 s, 197 s, 165 s.
+Costs are the `est_cost_usd` values from the run files, shown to 4 decimals. Full per-run wall clock (agent plus judge): 208 s, 197 s, 165 s.
 
 ### Findings
 

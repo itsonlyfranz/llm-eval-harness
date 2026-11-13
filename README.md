@@ -9,7 +9,7 @@ Every number below comes from the run records in `results/runs/` and was produce
 | Target agent | Suite | Deterministic check |
 |---|---|---|
 | structured-output-agent | 8 invoice-extraction cases (symbols, subtotals vs totals, thousands separators) | schema valid, vendor / total / currency match |
-| rag-citation-agent | 10 questions over a sample knowledge base (8 answerable, 1 needing the search fallback, 2 unanswerable; one of the 8 answerable is the fallback case) | abstains exactly when expected, expected facts present |
+| rag-citation-agent | 10 questions over a sample knowledge base (7 from the knowledge base, 1 needing the search fallback, 2 unanswerable) | abstains exactly when expected, expected facts present |
 | react-planning-agent | 8 calculator / lookup tasks, one unanswerable | expected value in the final answer, run not degraded |
 
 The agent repositories are imported read-only; nothing in them is modified. Each agent's one-method LLM interface is satisfied by an adapter (`adapters.py`) that calls Ollama at temperature 0 with a fixed seed and records a span per call (`tracing.py`).
